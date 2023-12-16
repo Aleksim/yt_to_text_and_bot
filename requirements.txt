@@ -1,0 +1,4 @@
+   openai>=0.10.2
+   pytube>=11.0.1
+   python-dotenv>=0.19.1
+   whisper>=0.1.0
