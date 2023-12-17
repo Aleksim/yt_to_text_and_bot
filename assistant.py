@@ -5,14 +5,18 @@ import os
 load_dotenv()
 openai.api_key = os.getenv('OPENAI_API_KEY')
 
-def ask_question_about_transcript(transcript, question):
+def ask_question_about_transcript(transcripts, question):
     # Provide instructions to the model
-    system_prompt = "You are a helpful assistant. Your mission is to use the following transcript of a video to answer accurately questions related to it."
+    system_prompt = "You are a helpful assistant. Answer the following question based on the video transcripts provided."
 
-    # Messages to establish context with the assistant
+    # Concatenate all transcripts into a single context
+    full_transcript = "\n\n".join(transcripts)  # Add some space between each transcript
+    
+    # Messages to establish context with the assistant 
+    # Modified for multiple transcripts
     messages = [
         {"role": "system", "content": system_prompt},
-        {"role": "assistant", "content": transcript}
+        {"role": "assistant", "content": full_transcript}
     ]
 
     # Include the user's question
@@ -20,7 +24,7 @@ def ask_question_about_transcript(transcript, question):
 
     try:
         response = openai.ChatCompletion.create(
-            model="gpt-4-1106-preview",  
+            model="gpt-4-1106-preview",  # Replace with the correct model you have access to
             messages=messages
         )
         # Extract and return the response to the user's question
@@ -33,9 +37,3 @@ def ask_question_about_transcript(transcript, question):
     except Exception as e:
         print(f"An error occurred while answering the question: {e}")
         return "There was an issue with generating an answer."
-
-# Example usage (for testing purposes, not to be included in production code)
-if __name__ == "__main__":
-    sample_transcript = "This is a sample transcript text."
-    sample_question = "What is discussed in the transcript?"
-    print(ask_question_about_transcript(sample_transcript, sample_question))
