@@ -9,8 +9,8 @@ def main():
     
     while True:
         context_length = sum(len(transcript.split()) for transcript in transcripts)
-        context_length_msg = f"(Current context length: {context_length} words)"
-        action = input(f"Would you like to add a transcript, ask a question, or exit? {context_length_msg} (add/ask/exit): ").lower()
+        context_length_msg = f"(FYI: current context length: {context_length} words)"
+        action = input(f"Would you like to add a transcript, ask a question, or exit? (type 'add', 'ask' or 'exit'). {context_length_msg}").lower()
 
         if action == "add":
             youtube_url = input("\nEnter the YouTube video URL: ")

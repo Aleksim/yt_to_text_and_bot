@@ -24,7 +24,7 @@ def ask_question_about_transcript(transcripts, question):
 
     try:
         response = openai.ChatCompletion.create(
-            model="gpt-4-1106-preview",  # Replace with the correct model you have access to
+            model="gpt-4-1106-preview",  
             messages=messages
         )
         # Extract and return the response to the user's question
