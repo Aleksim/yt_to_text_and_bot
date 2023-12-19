@@ -24,8 +24,8 @@ These instructions will guide you on how to set up and run the project on your l
 Clone the repository to your local machine:
 
 ```sh
-git clone https://github.com/your-github-username/your-repo-name.git
-cd your-repo-name
+git clone https://github.com/Aleksim/yt_to_text_and_bot.git
+cd yt_to_text_and_bot
 ```
 
 Install the required packages:
